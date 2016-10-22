@@ -6,15 +6,15 @@ var timeStep = 1.0 / 60.0;
 var doDraw = true;
 var cw_paused = false;
 
-var box2dfps = 60;
-var screenfps = 60;
+var box2dfps = 30;
+var screenfps = 30;
 
 var debugbox = document.getElementById("debug");
 
 var canvas = document.getElementById("mainbox");
 var ctx = canvas.getContext("2d");
 
-var cameraspeed = 0.05;
+var cameraspeed = 0.04;
 var camera_y = 0;
 var camera_x = 0;
 var camera_target = -1; // which car should we follow? -1 = leader
@@ -56,7 +56,7 @@ var zoom = 70;
 
 var mutable_floor = false;
 
-var maxFloorTiles = 200;
+var maxFloorTiles = 400;
 var cw_floorTiles = new Array();
 var last_drawn_tile = 0;
 
@@ -622,8 +622,8 @@ function cw_setCameraPosition() {
   } else {
     var cameraTargetPosition = leaderPosition;
   }
-  var diff_y = camera_y - cameraTargetPosition.y;
-  var diff_x = camera_x - cameraTargetPosition.x;
+  var diff_y = camera_y - cameraTargetPosition.y - 5;
+  var diff_x = camera_x - cameraTargetPosition.x + 5;
   camera_y -= cameraspeed * diff_y;
   camera_x -= cameraspeed * diff_x;
   cw_minimapCamera(camera_x, camera_y);
@@ -654,7 +654,7 @@ function cw_drawCars() {
     }
     myCarPos = myCar.getPosition();
 
-    if(myCarPos.x < (camera_x - 5)) {
+    if(myCarPos.x < (camera_x - 10)) {
       // too far behind, don't draw
       continue;
     }
@@ -697,6 +697,7 @@ function toggleDisplay() {
   if(cw_paused) {
     return;
   }
+  toggleInfo();
   canvas.width = canvas.width;
   if(doDraw) {
     doDraw = false;
@@ -910,7 +911,7 @@ function cw_resetWorld() {
 }
 
 function cw_confirmResetWorld() {
-  if(confirm('Really reset world?')) {
+  if(confirm('This action will reset the world - Continue?')) {
     cw_resetWorld();
   } else {
     return false;
@@ -939,6 +940,7 @@ function cw_resumeSimulation() {
 function cw_startGhostReplay() {
   if(!doDraw) {
     toggleDisplay();
+
   }
   cw_pauseSimulation();
   cw_ghostReplayInterval = setInterval(cw_drawGhostReplay,Math.round(1000/screenfps));
@@ -977,6 +979,7 @@ function cw_init() {
     newbar.id = "bar"+k;
     newbar.style.paddingTop = k*9+"px";
     minimapholder.appendChild(newbar);
+
 
     // health bars
     var newhealth = hbar.cloneNode(true);

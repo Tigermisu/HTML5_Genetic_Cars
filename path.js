@@ -69,15 +69,15 @@ function cw_drawFloor() {
   ctx.beginPath();
 
   outer_loop:
-  for(var k = Math.max(0,last_drawn_tile-20); k < cw_floorTiles.length; k++) {
+  for(var k = Math.max(0,last_drawn_tile-25); k < cw_floorTiles.length; k++) {
     var b = cw_floorTiles[k];
     for (f = b.GetFixtureList(); f; f = f.m_next) {
       var s = f.GetShape();
       var shapePosition = b.GetWorldPoint(s.m_vertices[0]).x;
-      if((shapePosition > (camera_x - 5)) && (shapePosition < (camera_x + 10))) {
+      if((shapePosition > (camera_x - 5)) && (shapePosition < (camera_x + 25))) {
         cw_drawVirtualPoly(b, s.m_vertices, s.m_vertexCount);
       }
-      if(shapePosition > camera_x + 10) {
+      if(shapePosition > camera_x + 25) {
         last_drawn_tile = k;
         break outer_loop;
       }

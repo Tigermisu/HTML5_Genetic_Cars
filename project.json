@@ -1,0 +1,23 @@
+{
+	"description" : "A genetic algorithm visualized in a bunch of cars - Every generation the good genes reproduce, the bad ones die.\n\nContains many settings to customize the algorithm itself.\n\nThis is a wallpaper-ized version by me, original version can be found at http://rednuht.org/genetic_cars_2/",
+	"file" : "index.html",
+	"general" : 
+	{
+		"properties" : 
+		{
+			"schemecolor" : 
+			{
+				"text" : "Scheme color",
+				"type" : "color",
+				"value" : "0.2 0.2 0.2"
+			}
+		}
+	},
+	"monetization" : false,
+	"preview" : "preview.jpg",
+	"tags" : [ "Game", "Abstract", "Technology" ],
+	"title" : "Genetic Cars - HTML5",
+	"type" : "web",
+	"visibility" : "public",
+	"workshopid" : 785488708
+}

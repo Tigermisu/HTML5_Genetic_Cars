@@ -10,7 +10,7 @@ function cw_plotTop() {
   graphctx.beginPath();
   graphctx.moveTo(0,0);
   for(var k = 0; k < graphsize; k++) {
-    graphctx.lineTo(400*(k+1)/graphsize,cw_graphTop[k]);
+    graphctx.lineTo(400*(k+1)/graphsize,cw_graphTop[k]/2);
   }
   graphctx.stroke();
 }
@@ -21,7 +21,7 @@ function cw_plotElite() {
   graphctx.beginPath();
   graphctx.moveTo(0,0);
   for(var k = 0; k < graphsize; k++) {
-    graphctx.lineTo(400*(k+1)/graphsize,cw_graphElite[k]);
+    graphctx.lineTo(400*(k+1)/graphsize,cw_graphElite[k]/2);
   }
   graphctx.stroke();
 }
@@ -32,7 +32,7 @@ function cw_plotAverage() {
   graphctx.beginPath();
   graphctx.moveTo(0,0);
   for(var k = 0; k < graphsize; k++) {
-    graphctx.lineTo(400*(k+1)/graphsize,cw_graphAverage[k]);
+    graphctx.lineTo(400*(k+1)/graphsize,cw_graphAverage[k]/2);
   }
   graphctx.stroke();
 }
